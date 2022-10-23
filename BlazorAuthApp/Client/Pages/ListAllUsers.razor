@@ -1,0 +1,72 @@
+﻿@page "/listusers"
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using BlazorAuthApp.Shared
+@attribute [Authorize]
+@using System.Security.Claims
+@inject HttpClient Http
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+
+<h3>Edit Users</h3>
+
+@if (AppUsers == null)
+{
+    <p><em>Loading...</em></p>
+}
+
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>UserName</th>
+                <th>Email</th>
+                <th>PhoneNumber</th>
+                <th>AccessFailedCount</th>
+                <th>Role</th>
+				<th>User Allowed</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in AppUsers)
+            {
+                <tr>
+                    <td>@user.UserName</td>
+                    <td>@user.Email</td>
+                    <td>@user.PhoneNumber</td>
+                    <td>@user.AccessFailedCount</td>
+                    <td>@user.Roles.ToString()</td>
+                    <input class="form-check-input" type="checkbox" checked="@user.LockoutEnabled" @onclick ="()=> SetUserState(user)">
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    private List<AppUser>? AppUsers;
+    private bool isAuth = false;
+    protected override async Task OnInitializedAsync()
+    {
+        var user = (await AuthenticationStateProvider.GetAuthenticationStateAsync()).User.Identity;
+        isAuth = user.IsAuthenticated;
+        if (user != null && user.IsAuthenticated)
+        {
+            AppUsers = await Http.GetFromJsonAsync<List<AppUser>>("api/appuser");
+        }
+    }
+    private async Task SetUserState(AppUser appUser)
+    {
+        var res = await Http.PutAsJsonAsync<string>($"api/appuser/{appUser.Id}", appUser.Id);
+    }
+
+    private async Task SetUsers(HttpResponseMessage res)
+    {
+        var resp = await res.Content.ReadFromJsonAsync<List<AppUser>>();
+        AppUsers = resp;
+    }
+
+}

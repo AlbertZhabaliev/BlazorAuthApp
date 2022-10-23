@@ -1,9 +1,22 @@
 ﻿@page "/"
+@using System.Security.Claims
+@inject HttpClient Http
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>Please login to see all users</h1>
 
-Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+@*@code {
+	protected override async Task OnInitializedAsync()
+	{
+		var user = (await AuthenticationStateProvider.GetAuthenticationStateAsync()).User.Identity;
+		
+		if (user != null && user.IsAuthenticated)
+		{
+			var appUsers = await Http.GetFromJsonAsync<List<AppUser>>("api/appuser");
+		}
+	}
+}*@

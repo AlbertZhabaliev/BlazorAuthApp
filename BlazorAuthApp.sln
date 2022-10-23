@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAuthApp.Server", "BlazorAuthApp\Server\BlazorAuthApp.Server.csproj", "{EABE4C4E-1188-4AA2-A2DF-01CFA4E26F1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAuthApp.Server", "BlazorAuthApp\Server\BlazorAuthApp.Server.csproj", "{EABE4C4E-1188-4AA2-A2DF-01CFA4E26F1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAuthApp.Client", "BlazorAuthApp\Client\BlazorAuthApp.Client.csproj", "{06C60FDD-99FE-4DAC-A18E-7D453B98D359}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAuthApp.Client", "BlazorAuthApp\Client\BlazorAuthApp.Client.csproj", "{06C60FDD-99FE-4DAC-A18E-7D453B98D359}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAuthApp.Shared", "BlazorAuthApp\Shared\BlazorAuthApp.Shared.csproj", "{CFAF5D66-649A-4FDD-B90C-03BC6522474B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAuthApp.Shared", "BlazorAuthApp\Shared\BlazorAuthApp.Shared.csproj", "{CFAF5D66-649A-4FDD-B90C-03BC6522474B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

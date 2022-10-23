@@ -1,3 +1,5 @@
+global using BlazorAuthApp.Shared;
+
 using BlazorAuthApp.Client;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
@@ -12,6 +14,7 @@ builder.Services.AddHttpClient("BlazorAuthApp.ServerAPI", client => client.BaseA
 
 // Supply HttpClient instances that include access tokens when making requests to the server project
 builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("BlazorAuthApp.ServerAPI"));
+
 
 builder.Services.AddApiAuthorization();
 
